@@ -1,2 +1,2 @@
-# youtube
-Let's Build YouTube from letsbuildthatapp.com
+# Youtube
+Let's Build YouTube from [letsbuildthatapp.com](letsbuildthatapp.com)
