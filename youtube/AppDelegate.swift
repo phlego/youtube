@@ -22,10 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let layout = UICollectionViewFlowLayout()
         window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
         
-        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 230, green: 32, blue: 31)
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().isTranslucent = false
+        let barUI = UINavigationBar.appearance()
+        barUI.barTintColor = UIColor.rgb(red: 230, green: 32, blue: 31)
+        barUI.tintColor = .white
+        barUI.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        barUI.isTranslucent = false
+        barUI.shadowImage = UIImage()
+        barUI.setBackgroundImage(UIImage(), for: .default)
         
         application.statusBarStyle = .lightContent
         
