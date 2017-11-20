@@ -39,6 +39,8 @@ class SettingsLauncher: NSObject {
         ]
     }()
     
+    var homeController: HomeController?
+    
     func showSettings() {
         if let window = UIApplication.shared.keyWindow {
             blackView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -60,12 +62,17 @@ class SettingsLauncher: NSObject {
         }
     }
     
-    @objc func handleDismiss() {
-        UIView.animate(withDuration: 0.5, animations: {
+    @objc func handleDismiss(_ setting: Setting) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, animations: {
             self.blackView.alpha = 0
             
             if let window = UIApplication.shared.keyWindow {
                 self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+            }
+        }, completion: { finished in
+            if setting.isKind(of: Setting.self) && setting.name != "Cancel" {
+                self.homeController?.showController(forSetting: setting)
             }
         })
     }
@@ -97,6 +104,11 @@ extension SettingsLauncher: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let setting = self.settings[indexPath.item]
+        handleDismiss(setting)
     }
 }
 
