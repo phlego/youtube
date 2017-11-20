@@ -9,13 +9,22 @@
 import UIKit
 
 class Setting: NSObject {
-    let name: String
+    let name: SettingName
     let imageName: String
     
-    init(name: String, imageName: String) {
+    init(name: SettingName, imageName: String) {
         self.name = name
         self.imageName = imageName
     }
+}
+
+enum SettingName: String {
+    case settings = "Settings"
+    case privacy = "Terms & Privacy Policy"
+    case feedback = "Send Feedback"
+    case help = "Help"
+    case switchAccount = "Switch Account"
+    case cancel = "Cancel"
 }
 
 class SettingsLauncher: NSObject {
@@ -30,12 +39,12 @@ class SettingsLauncher: NSObject {
     let cellHeight = 50
     let settings: [Setting] = {
         return [
-            Setting(name: "Settings", imageName: "settings"),
-            Setting(name: "Terms & Privacy Policy", imageName: "privacy"),
-            Setting(name: "Send Feedback", imageName: "feedback"),
-            Setting(name: "Help", imageName: "help"),
-            Setting(name: "Switch Account", imageName: "switch_account"),
-            Setting(name: "Cancel", imageName: "cancel")
+            Setting(name: .settings, imageName: "settings"),
+            Setting(name: .privacy, imageName: "privacy"),
+            Setting(name: .feedback, imageName: "feedback"),
+            Setting(name: .help, imageName: "help"),
+            Setting(name: .switchAccount, imageName: "switch_account"),
+            Setting(name: .cancel, imageName: "cancel")
         ]
     }()
     
@@ -44,7 +53,7 @@ class SettingsLauncher: NSObject {
     func showSettings() {
         if let window = UIApplication.shared.keyWindow {
             blackView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss(_:))))
             
             window.addSubview(blackView)
             blackView.frame = window.frame
@@ -62,7 +71,7 @@ class SettingsLauncher: NSObject {
         }
     }
     
-    @objc func handleDismiss(_ setting: Setting) {
+    @objc func handleDismiss(_ setting: Setting?) {
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, animations: {
             self.blackView.alpha = 0
@@ -71,8 +80,8 @@ class SettingsLauncher: NSObject {
                 self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
             }
         }, completion: { finished in
-            if setting.isKind(of: Setting.self) && setting.name != "Cancel" {
-                self.homeController?.showController(forSetting: setting)
+            if setting?.name != .cancel && setting?.imageName != "" {
+                self.homeController?.showController(forSetting: setting!)
             }
         })
     }
