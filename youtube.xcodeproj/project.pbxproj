@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F609BEE81FC53AFE00E11A48 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F609BEE71FC53AFE00E11A48 /* ApiService.swift */; };
 		F616B03A1FC1AC2900342433 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616B0391FC1AC2900342433 /* Video.swift */; };
+		F620DD2B1FC56741007F1F05 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F620DD2A1FC56741007F1F05 /* FeedCell.swift */; };
 		F64DEFDE1FC1849200B97406 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DEFDD1FC1849200B97406 /* Extensions.swift */; };
 		F64DEFE11FC184F800B97406 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DEFE01FC184F800B97406 /* VideoCell.swift */; };
 		F64DEFE41FC186F100B97406 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DEFE31FC186F100B97406 /* MenuBar.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		F609BEE71FC53AFE00E11A48 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		F616B0391FC1AC2900342433 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		F620DD2A1FC56741007F1F05 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		F64DEFDD1FC1849200B97406 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F64DEFE01FC184F800B97406 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		F64DEFE31FC186F100B97406 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				F64DEFE01FC184F800B97406 /* VideoCell.swift */,
 				F64DEFE31FC186F100B97406 /* MenuBar.swift */,
 				F65070421FC2CCB000178775 /* SettingCell.swift */,
+				F620DD2A1FC56741007F1F05 /* FeedCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6EEBF0E1FC0711D0032B8A8 /* HomeController.swift in Sources */,
+				F620DD2B1FC56741007F1F05 /* FeedCell.swift in Sources */,
 				F616B03A1FC1AC2900342433 /* Video.swift in Sources */,
 				F65070431FC2CCB000178775 /* SettingCell.swift in Sources */,
 				F64DEFE11FC184F800B97406 /* VideoCell.swift in Sources */,
