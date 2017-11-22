@@ -15,7 +15,8 @@ class VideoPlayer: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
-        let urlString = "https://www.dropbox.com/s/4bybba28wiktcgc/Taylor%20Swift%20-%20Blank%20Space.mp4?dl=0"
+        let urlString = "https://firebasestorage.googleapis.com/v0/b/youtapevideos.appspot.com/o/Taylor%20Swift%20-%20Blank%20Space.mp4?alt=media&token=1c5f062b-e1d1-43d5-8248-7082a508a2f1"
+        //let urlString = "https://www.dropbox.com/s/4bybba28wiktcgc/Taylor%20Swift%20-%20Blank%20Space.mp4?dl=0"
 
         if let url = URL(string: urlString) {
             let player = AVPlayer(url: url)
