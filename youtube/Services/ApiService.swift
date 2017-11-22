@@ -11,8 +11,22 @@ import UIKit
 class ApiService: NSObject {
     static let instance = ApiService()
     
+    let baseUrl = "https://s3-us-west-2.amazonaws.com/youtubeassets"
+    
     func fetchVideos(completion: @escaping ([Video]) -> ()) {
-        let url = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
+        fetchFeed(forUrlString: "\(baseUrl)/home.json", completion: completion)
+    }
+    
+    func fetchTrendingFeed(completion: @escaping ([Video]) -> ()) {
+        fetchFeed(forUrlString: "\(baseUrl)/trending.json", completion: completion)
+    }
+    
+    func fetchSubscriptionFeed(completion: @escaping ([Video]) -> ()) {
+        fetchFeed(forUrlString: "\(baseUrl)/subscriptions.json", completion: completion)
+    }
+    
+    func fetchFeed(forUrlString urlString: String, completion: @escaping ([Video]) -> ()) {
+        let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print(error!)
@@ -44,6 +58,6 @@ class ApiService: NSObject {
             } catch let jsonError {
                 print(jsonError)
             }
-        }.resume()
+            }.resume()
     }
 }
