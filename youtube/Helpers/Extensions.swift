@@ -59,6 +59,15 @@ class CustomImageView: UIImageView {
     
 }
 
+extension UIDevice {
+    var isIphoneX: Bool {
+        return userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436
+    }
+}
+
+
+
+
 
 
 

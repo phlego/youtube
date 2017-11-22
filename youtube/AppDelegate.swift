@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         statusBarBackgroundView.backgroundColor = UIColor.rgb(red: 194, green: 31, blue: 31)
         window?.addSubview(statusBarBackgroundView)
         window?.addConstraintsWithFormat("H:|[v0]|", views: statusBarBackgroundView)
-        window?.addConstraintsWithFormat("V:|[v0(40)]", views: statusBarBackgroundView)
+        let statusBarBgHeight = UIDevice.current.isIphoneX ? 40 : 20
+        window?.addConstraintsWithFormat("V:|[v0(\(statusBarBgHeight))]", views: statusBarBackgroundView)
         
         return true
     }
