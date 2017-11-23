@@ -13,19 +13,19 @@ class ApiService: NSObject {
     
     let baseUrl = "https://s3-us-west-2.amazonaws.com/youtubeassets"
     
-    func fetchVideos(completion: @escaping ([Video]) -> ()) {
-        fetchFeed(forUrlString: "\(baseUrl)/home.json", completion: completion)
+    func fetchVideos(_ completion: @escaping ([Video]) -> ()) {
+        fetchFeed(forUrlString: "\(baseUrl)/home.json", completion)
     }
     
-    func fetchTrendingFeed(completion: @escaping ([Video]) -> ()) {
-        fetchFeed(forUrlString: "\(baseUrl)/trending.json", completion: completion)
+    func fetchTrendingFeed(_ completion: @escaping ([Video]) -> ()) {
+        fetchFeed(forUrlString: "\(baseUrl)/trending.json", completion)
     }
     
-    func fetchSubscriptionFeed(completion: @escaping ([Video]) -> ()) {
-        fetchFeed(forUrlString: "\(baseUrl)/subscriptions.json", completion: completion)
+    func fetchSubscriptionFeed(_ completion: @escaping ([Video]) -> ()) {
+        fetchFeed(forUrlString: "\(baseUrl)/subscriptions.json", completion)
     }
     
-    func fetchFeed(forUrlString urlString: String, completion: @escaping ([Video]) -> ()) {
+    func fetchFeed(forUrlString urlString: String, _ completion: @escaping ([Video]) -> ()) {
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
@@ -46,30 +46,4 @@ class ApiService: NSObject {
         }.resume()
     }
 }
-
-//do {
-//    let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-//
-//    var videos = [Video]()
-//
-//    for dictionary in json as! [[String: Any]] {
-//        let video = Video()
-//        video.title = dictionary["title"] as? String
-//        video.thumbnailImageName = dictionary["thumbnail_image_name"] as? String
-//
-//        let channelDictionary = dictionary["channel"] as! [String: Any]
-//        let channel = Channel()
-//        channel.name = channelDictionary["name"] as? String
-//        channel.profileImageName = channelDictionary["profile_image_name"] as? String
-//        video.channel = channel
-//
-//        videos.append(video)
-//    }
-//
-//    DispatchQueue.main.async {
-//        completion(videos)
-//    }
-//} catch let jsonError {
-//    print(jsonError)
-//}
 
