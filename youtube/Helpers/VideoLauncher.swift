@@ -16,11 +16,10 @@ class VideoPlayer: UIView {
         super.init(frame: frame)
         backgroundColor = .black
         let urlString = "https://firebasestorage.googleapis.com/v0/b/youtapevideos.appspot.com/o/Taylor%20Swift%20-%20Blank%20Space.mp4?alt=media&token=1c5f062b-e1d1-43d5-8248-7082a508a2f1"
-        //let urlString = "https://www.dropbox.com/s/4bybba28wiktcgc/Taylor%20Swift%20-%20Blank%20Space.mp4?dl=0"
 
         if let url = URL(string: urlString) {
             let player = AVPlayer(url: url)
-            let playerLayer = AVPlayerLayer(layer: player)
+            let playerLayer = AVPlayerLayer(player: player)
             self.layer.addSublayer(playerLayer)
             playerLayer.frame = self.frame
 
@@ -43,7 +42,7 @@ class VideoLauncher: NSObject {
             view.frame = CGRect(x: keyWindow.frame.width - 10, y: keyWindow.frame.height - 10, width: 10, height: 10)
             
             let height = keyWindow.frame.width * 9 / 16
-            let videoPlayerFrame = CGRect(x: 0, y: 100, width: keyWindow.frame.width, height: height)
+            let videoPlayerFrame = CGRect(x: 0, y: 0, width: keyWindow.frame.width, height: height)
             let videoPlayer = VideoPlayer(frame: videoPlayerFrame)
             view.addSubview(videoPlayer)
             
